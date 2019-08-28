@@ -1,0 +1,28 @@
+{
+  "name": "interface",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build && npm run launch",
+    "launch": "node build/index.js",
+    "build": "./node_modules/.bin/babel src/ --out-dir build/",
+    "build:watch": "./node_modules/.bin/babel --watch src/ --out-dir build/",
+    "dev": "babel-watch src/index.js"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.0",
+    "@babel/preset-env": "^7.5.0",
+    "@fortawesome/fontawesome-free": "^5.9.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-watch": "^7.0.0",
+    "bootstrap": "^4.3.1",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "^2.6.2",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^4.0.8",
+    "morgan": "~1.9.1"
+  }
+}
