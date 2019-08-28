@@ -1,0 +1,23 @@
+<div id="tendance">
+<% if (lastconso[index].soutirage < consommations[index].soutirage){%>
+    <img src="/images/fleche_rouge.png" class="fleche">
+    <% points -=1%>
+    <% compteurPoints += points %>
+    <p><%=points%> pt(s)</p>
+
+<%}else if (lastconso[index].soutirage > consommations[index].soutirage){%>
+    <% points++%>
+    <% compteurPoints += points %>
+    <img src="/images/fleche_vert.png" class="fleche">
+<p><%=points%> pt(s)</p>
+
+<%}else{%>
+    <img src="/images/egal_classement2.png" class="fleche">
+        <% compteurPoints += points %>
+<p><%=points%> pt</p>
+<%}%>
+</div>
+<!--<div id="pts">-->
+<!--<p><%=points%> pt</p>-->
+<!--</div>-->
+<%points = 0%>

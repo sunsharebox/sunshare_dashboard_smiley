@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Equipe sunShare</title>
+  <link href="/font/css/all.css" rel="stylesheet">
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <script src="/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    #tabScore {
+      font-size: 24px;
+    }
+  </style>
+  <script>
+    function aff(e) {
+      var x = document.getElementsByClassName("affichage");
+      for (var i = 0, len = x.length; i < len; i++) {
+        x[i].style.display = "none";
+      }
+      
+      var aff = document.getElementById("aff"+e);
+      aff.style.display = "block";
+    }
+  </script>
+</head>
+<body>
+  <% include ./navbar %>
+  <div class="container">
+    <div class="row" style="margin-top:40px;">
+      <div class="col-sm-6">
+        <table id="tabScore" class="table table-hover">
+          <tbody>
+            <% teams.forEach(function(team, e) { %>
+              <tr onclick="aff(<%= e %>)">
+                <th scope="row"><%= e+1 %></th>
+                <td><%= team.name %></td>
+                <% if(team.consommation > 50) { %>
+                  <td><span style="color:green"><i class="far fa-grin fa-2x"></i></span></td>
+                <% } else if (team.consommation == 50) { %>
+                  <td><span style="color:orange"><i class="far fa-meh fa-2x"></i></span></td>
+                <% } else { %>
+                  <td><span style="color:red"><i class="far fa-frown fa-2x"></i></span></td>
+                <% } %>
+              </tr>
+            <% }); %>
+          </tbody>
+        </table>
+      </div>  
+      <% teams.forEach(function(team, e) { %>
+        <div id="aff<%= e %>" class="col-sm-6 affichage" style="display:none;">
+          <div class="card text-white bg-info">
+            <div class="card-body">
+              <h1 style="float:right"><span class="badge badge-success"><%= team.points %> pts</span></h1>
+              <p class="card-text">Membre : <%= team.name %></p>
+              <p class="card-text">Inscrit le : <%= team.inscrit %></p>
+              <p class="card-text">Consommation : <%= team.consommation %>%</p>
+              <p class="card-text">Tendance : <%= team.tendance %></p>
+              <button type="button" class="btn btn-secondary" style="margin-right: 10px;">Tableaux de bord</button><button type="button" class="btn btn-secondary">Mes équipements</button>
+            </div>
+          </div>
+        </div>
+      <% }); %>
+    </div>
+  </div>
+</body>
+</html>
